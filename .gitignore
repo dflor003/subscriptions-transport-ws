@@ -1,10 +1,10 @@
 node_modules
 .DS_Store
-dist
+dist/test
 coverage
 typings
 npm-debug.log
-browser/
+# browser/
 .idea/
 .vscode/
 npm-debug.log.*
