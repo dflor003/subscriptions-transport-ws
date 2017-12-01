@@ -4,13 +4,13 @@ var WebSocket = require("ws");
 var message_types_1 = require("./message-types");
 var protocol_1 = require("./protocol");
 var isObject = require("lodash.isobject");
+var isPromise = require("is-promise");
 var graphql_1 = require("graphql");
 var empty_iterable_1 = require("./utils/empty-iterable");
 var iterall_1 = require("iterall");
 var promise_to_iterable_1 = require("./utils/promise-to-iterable");
 var is_subscriptions_1 = require("./utils/is-subscriptions");
 var parse_legacy_protocol_1 = require("./legacy/parse-legacy-protocol");
-var is_promise_1 = require("./utils/is-promise");
 var SubscriptionServer = (function () {
     function SubscriptionServer(options, socketOptions) {
         var _this = this;
@@ -195,7 +195,7 @@ var SubscriptionServer = (function () {
                                     executor = _this.subscribe;
                                 }
                                 var promiseOrIterable = executor(_this.schema, document, _this.rootValue, params.context, params.variables, params.operationName);
-                                if (!iterall_1.isAsyncIterable(promiseOrIterable) && is_promise_1.isPromise(promiseOrIterable)) {
+                                if (!iterall_1.isAsyncIterable(promiseOrIterable) && isPromise(promiseOrIterable)) {
                                     executionIterable = promiseOrIterable;
                                 }
                                 else if (iterall_1.isAsyncIterable(promiseOrIterable)) {
